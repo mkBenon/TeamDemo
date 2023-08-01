@@ -1,0 +1,12 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run unit tests
+npm test
+
+# Check code coverage
+COVERAGE=$(npm run coverage | grep 'All files' | awk '{print $6}' | sed 's/%//')
+if [ "$COVERAGE" -lt 80 ]; then
+  echo "Code coverage is less than 80%. Commit aborted."
+  exit 1
+fi
