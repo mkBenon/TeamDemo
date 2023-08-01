@@ -1,18 +1,19 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const request = require('request');
+const errorHandler = require('../common/errorHandler');
 const app = express();
 
 app.use(express.json());
 
-app.post('/api', (req, res) => {
+app.post('/api', (req, res, next) => {
   jwt.verify(req.headers['authorization'], 'secretkey', (err, decoded) => {
     if (err) {
-      res.sendStatus(401);
+      next({ status: 401, message: 'Unauthorized' });
     } else {
       request.post({url: 'http://microservice2/api', headers: {'authorization': req.headers['authorization']}}, (error, response, body) => {
         if (error) {
-          res.sendStatus(500);
+          next({ status: 500, message: 'Internal Server Error' });
         } else {
           res.status(response.statusCode).send(body);
         }
@@ -20,5 +21,7 @@ app.post('/api', (req, res) => {
     }
   });
 });
+
+app.use(errorHandler);
 
 app.listen(3000, () => console.log('Microservice1 listening on port 3000!'));
