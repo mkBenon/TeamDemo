@@ -4,7 +4,11 @@ const app = express();
 
 app.use(express.json());
 
-app.post('/api', (req, res) => {
+app.get('/api/v2/resource', (req, res) => {
+  res.json({ message: 'GET request to resource in microservice2' });
+});
+
+app.post('/api/v2/resource', (req, res) => {
   jwt.verify(req.headers['authorization'], 'secretkey', (err, decoded) => {
     if (err) {
       res.sendStatus(401);

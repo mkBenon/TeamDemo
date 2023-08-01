@@ -6,7 +6,11 @@ const app = express();
 
 app.use(express.json());
 
-app.post('/api', (req, res, next) => {
+app.get('/api/v1/resource', (req, res) => {
+  res.json({ message: 'GET request to resource in microservice1' });
+});
+
+app.post('/api/v1/resource', (req, res, next) => {
   jwt.verify(req.headers['authorization'], 'secretkey', (err, decoded) => {
     if (err) {
       next({ status: 401, message: 'Unauthorized' });
