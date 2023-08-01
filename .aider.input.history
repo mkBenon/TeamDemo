@@ -1,0 +1,36 @@
+
+# 2023-08-01 16:14:32.453698
++You are an integration specialist and know integration best practices.Write a Code template that creates microservices using best practices. Have the following parameters for every API: authentication bearer token
++Every API has one microservice it calls. A microservice can call another microservice. An API has either a POST or GET 
++Always update the automated test cases. The following tests must be writen or updated every time the code is updated: unit test cases, integration tests. The following http responses must be added to every microservice: 200, 201 if async microservice, 400, 401, 402, 500 as a catch all. 
++A series of microservices that can work independently. Each microservice should have a url to connect to. I should be able to run the code using npm start and test the api in postman. Have the different microservices in different folders. Have a Readme on how to run the code.
+
+# 2023-08-01 16:18:38.529532
++look at my previous request and complete the request with test cases etc.
+
+# 2023-08-01 16:21:26.093441
++I am getting the error "module_not_found" when I run npm start
+
+# 2023-08-01 16:23:31.651474
++I will not chai, please change it to npm 
+
+# 2023-08-01 16:27:55.992969
++add an error handling template to be used by all mycroservices, based on my first prompt.
+
+# 2023-08-01 17:41:36.766745
++I am getting this error when I run npm start: Error: Cannot find module 'D:\demo20230801v2\root\index.js'
+
+# 2023-08-01 17:46:01.167569
++what are the urls and request structure I should use in postman?
+
+# 2023-08-01 17:47:27.846104
++Add routes and request structures in the index.js files in both microservices.
+
+# 2023-08-01 18:00:43.983860
++everytime the code is update, run unit tests and update the code to ensure that the code coverage is atleast 80%
+
+# 2023-08-01 18:19:09.083412
++add the hooks repository and the precommit code suggested.
+
+# 2023-08-01 18:25:51.816654
++update the error handling to include atleast 10 http standard error responses. Give appropriate error responses based on the type of http error. Include http handling for 201 response, and 202 which are not errors.
